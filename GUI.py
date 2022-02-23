@@ -149,11 +149,9 @@ if __name__ == '__main__':
         # main()
     # CTRL + C pressed so exit gracefully
         app = MyTkApp()
-
-       
-
         main()
 
     except KeyboardInterrupt:
         print('Interrupted.')
+        app.callback()
         sys.exit()

@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
         # main()
     # CTRL + C pressed so exit gracefully
-        app = MyTkApp()
+        # app = MyTkApp()
         main()
 
     except KeyboardInterrupt:

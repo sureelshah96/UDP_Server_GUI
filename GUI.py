@@ -16,7 +16,7 @@ def on_1():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '0'
-    client.sendto(message.encode(), ('192.168.137.181',1000))
+    client.sendto(message.encode(), ('192.168.1.4',1000))
     
 
 def off_1():
@@ -24,7 +24,7 @@ def off_1():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '1'
-    client.sendto(message.encode(), ('192.168.137.181',1000))
+    client.sendto(message.encode(), ('192.168.1.4',1000))
 
 
 def on_2():
@@ -104,15 +104,9 @@ def main():
         # Continue with main loop
         # print("...")
 
-class MyTkApp(threading.Thread):
+class MyTkApp():
     def __init__(self):
-        threading.Thread.__init__(self)
-        self.start()
-
-    def callback(self):
-        self.root.quit()
-
-    def run(self):
+        # threading.Thread.__init__(self)
         self.root = tk.Tk()
         self.root.protocol("WM_DELETE_WINDOW", self.callback)
 
@@ -135,12 +129,20 @@ class MyTkApp(threading.Thread):
         startButton3.grid(column=2, row=0, padx=10, pady=10)
         stopButton3 = tk.Button(self.root,text="OFF-3",command=off_3)
         stopButton3.grid(column=2, row=1, padx=10, pady=10)
+        # self.start()
+        self.root.mainloop()
+
+
+    def callback(self):
+        self.root.quit()
+
+    # def run(self):
+        
 
 
         # label = tk.Label(self.root, text="Hello World")
         # label.pack()
 
-        self.root.mainloop()
 
 
 if __name__ == '__main__':
@@ -149,9 +151,9 @@ if __name__ == '__main__':
         # main()
     # CTRL + C pressed so exit gracefully
         app = MyTkApp()
-        main()
+        # main()
 
     except KeyboardInterrupt:
         print('Interrupted.')
-        app.callback()
+        # app.callback()
         sys.exit()

@@ -55,7 +55,61 @@ def off_3():
     message = '1'
     client.sendto(message.encode(), ('192.168.137.173',1000))   
 
-  
+def on_4():
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '0'
+    client.sendto(message.encode(), ('192.168.137.4',1000))
+    
+
+def off_4():
+    on = 0
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '1'
+    client.sendto(message.encode(), ('192.168.137.4',1000)) 
+
+def on_5():
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '0'
+    client.sendto(message.encode(), ('192.168.137.4',1000))
+    
+
+def off_5():
+    on = 0
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '1'
+    client.sendto(message.encode(), ('192.168.137.4',1000)) 
+
+def on_6():
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '0'
+    client.sendto(message.encode(), ('192.168.137.4',1000))
+    
+
+def off_6():
+    on = 0
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '1'
+    client.sendto(message.encode(), ('192.168.137.4',1000)) 
+
+def on_7():
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '0'
+    client.sendto(message.encode(), ('192.168.137.4',1000))
+    
+
+def off_7():
+    on = 0
+    curr_time = datetime.datetime.now()
+    sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
+    message = '1'
+    client.sendto(message.encode(), ('192.168.137.4',1000))  
 
 def milli():
     return round(time.time() * 1000)
@@ -113,6 +167,10 @@ class MyTkApp():
         self.root.columnconfigure(0, weight=1)
         self.root.columnconfigure(1, weight=1)
         self.root.columnconfigure(2, weight=1)
+        self.root.columnconfigure(3, weight=1)
+        self.root.columnconfigure(4, weight=1)
+        self.root.columnconfigure(5, weight=1)
+        self.root.columnconfigure(6, weight=1)
 
         self.root.title("Control Panel")
         self.root.geometry("400x100")
@@ -129,6 +187,26 @@ class MyTkApp():
         startButton3.grid(column=2, row=0, padx=10, pady=10)
         stopButton3 = tk.Button(self.root,text="OFF-3",command=off_3)
         stopButton3.grid(column=2, row=1, padx=10, pady=10)
+
+        startButton = tk.Button(self.root,text="ON-4",command=on_4)
+        startButton.grid(column=3, row=0, padx=10, pady=10)
+        stopButton = tk.Button(self.root,text="OFF-4",command=off_4)
+        stopButton.grid(column=3, row=1, padx=10, pady=10)
+        startButton2 = tk.Button(self.root,text="ON-5",command=on_5)
+        startButton2.grid(column=4, row=0, padx=10, pady=10)
+        stopButton2 = tk.Button(self.root,text="OFF-5",command=off_5)
+        stopButton2.grid(column=4, row=1, padx=10, pady=10)
+        startButton3 = tk.Button(self.root,text="ON-6",command=on_6)
+        startButton3.grid(column=5, row=0, padx=10, pady=10)
+        stopButton3 = tk.Button(self.root,text="OFF-6",command=off_6)
+        stopButton3.grid(column=5, row=1, padx=10, pady=10)
+
+        startButton3 = tk.Button(self.root,text="ON-7",command=on_7)
+        startButton3.grid(column=6, row=0, padx=10, pady=10)
+        stopButton3 = tk.Button(self.root,text="OFF-7",command=off_7)
+        stopButton3.grid(column=6, row=1, padx=10, pady=10)
+
+
         # self.start()
         self.root.mainloop()
 

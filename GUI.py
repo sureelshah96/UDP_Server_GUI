@@ -55,6 +55,9 @@ def off_3():
     message = '1'
     client.sendto(message.encode(), ('192.168.137.7',1000))   
 
+
+
+
   
 
 def milli():

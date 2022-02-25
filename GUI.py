@@ -16,7 +16,7 @@ def on_1():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '0'
-    client.sendto(message.encode(), ('192.168.137.181',1000))
+    client.sendto(message.encode(), ('192.168.1.5',1000))
     
 
 def off_1():
@@ -24,14 +24,14 @@ def off_1():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '1'
-    client.sendto(message.encode(), ('192.168.137.181',1000))
+    client.sendto(message.encode(), ('192.168.1.5',1000))
 
 
 def on_2():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '0'
-    client.sendto(message.encode(), ('192.168.137.195',1000))
+    client.sendto(message.encode(), ('192.168.137.6',1000))
     
 
 def off_2():
@@ -39,13 +39,13 @@ def off_2():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '1'
-    client.sendto(message.encode(), ('192.168.137.195',1000))    
+    client.sendto(message.encode(), ('192.168.137.6',1000))    
 
 def on_3():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '0'
-    client.sendto(message.encode(), ('192.168.137.173',1000))
+    client.sendto(message.encode(), ('192.168.137.7',1000))
     
 
 def off_3():
@@ -53,7 +53,7 @@ def off_3():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '1'
-    client.sendto(message.encode(), ('192.168.137.173',1000))   
+    client.sendto(message.encode(), ('192.168.137.7',1000))   
 
   
 
@@ -61,7 +61,7 @@ def milli():
     return round(time.time() * 1000)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)  # UDP
-
+# client.unbind()
 # Uncomment this if you plan to broadcast from this script
 #client.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
@@ -147,11 +147,12 @@ if __name__ == '__main__':
     try:
 
         # main()
-    # CTRL + C pressed so exit gracefully
         # app = MyTkApp()
+        
         main()
 
     except KeyboardInterrupt:
         print('Interrupted.')
-        app.callback()
+        client.close()
+     #   app.callback()
         sys.exit()

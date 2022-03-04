@@ -59,7 +59,7 @@ def on_4():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '0'
-    client.sendto(message.encode(), ('192.168.137.4',1000))
+    client.sendto(message.encode(), ('192.168.1.4',1000))
     
 
 def off_4():
@@ -67,7 +67,7 @@ def off_4():
     curr_time = datetime.datetime.now()
     sys_timestamp = float(curr_time.strftime('%S')) + (float(curr_time.strftime('%f')) / 1000000)  #Get UDP_Server Time in seconds
     message = '1'
-    client.sendto(message.encode(), ('192.168.137.4',1000)) 
+    client.sendto(message.encode(), ('192.168.1.4',1000)) 
 
 def on_5():
     curr_time = datetime.datetime.now()
